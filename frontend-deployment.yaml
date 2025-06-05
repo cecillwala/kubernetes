@@ -3,20 +3,17 @@ kind: Deployment
 metadata:
   name: frontend
   labels:
-    app:  kyc-frontend
+    app:  k8s-frontend
 spec: 
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app:  kyc-frontend
+      app:  k8s-frontend
   template:
     metadata:
       labels:
-        app:  kyc-frontend
+        app:  k8s-frontend
     spec:
       containers:
         - name: frontend
-          image: cecillwala/kyc-frontend
-          ports: 
-            - containerPort:  5000
-
+          image: cecillwala/k8s-frontend
