@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app:  kyc-frontend
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app:  kyc-frontend
+  template:
+    metadata:
+      labels:
+        app:  kyc-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: cecillwala/kyc-frontend
+          ports: 
+            - containerPort:  5000
+

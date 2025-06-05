@@ -1,0 +1,21 @@
+
+<div class="form-container">
+    <h1>Do you have a common name? Let's find out</h1>
+
+    <form class="form-class" method="post" (ngSubmit)="searchResponse()">
+        <input 
+        name="search"
+        placeholder="Search"
+        [(ngModel)]="search().message"
+        />
+        <div class="btns-class">
+            <button type="submit">Search</button>
+            <button type="button" (click)="luckyResponse()">I'm feeling lucky</button>
+        </div>
+
+        <h3>{{ response().message }}</h3>
+    </form>
+
+    
+</div>
+
