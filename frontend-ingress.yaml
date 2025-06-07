@@ -8,7 +8,8 @@ metadata:
 spec:
   ingressClassName: frontend
   rules:
-  - http:
+  - host: cecil.example.com
+  http:
       paths:
       - path: /guess
         pathType: Prefix
