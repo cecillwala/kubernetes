@@ -6,6 +6,7 @@ spec:
   selector:
     app: k8s-backend
   ports:
-    - protocol: TCP
-      port: 8080
-  type: ClusterIP
+    # - protocol: TCP
+    - port: 8080
+      NodePort: 31000
+  type: NodePort
