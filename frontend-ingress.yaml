@@ -8,12 +8,12 @@ metadata:
 spec:
   ingressClassName: frontend
   rules:
-    - http:
-      paths:
-      - path: /guess
-        pathType: Prefix
-        backend:
-          service:
-            name: frontend-service
-            port:
-              number: 4200
+  - http:
+    paths:
+    - path: /guess
+      pathType: Prefix
+      backend:
+        service:
+          name: frontend-service
+          port:
+            number: 4200
