@@ -4,17 +4,16 @@ metadata:
   name: frontend-ingress
   namespace: default
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/service-upstream: "true"
 spec:
   ingressClassName: frontend
   rules:
-  - host: cecil.example.com
-    http:
-        paths:
-        - path: /guess
-          pathType: Prefix
-          backend:
-            service:
-              name: frontend-service
-              port:
-                number: 4200
+    - http:
+      paths:
+      - path: /guess
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service
+            port:
+              number: 4200
