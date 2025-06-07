@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: frontend-service
 spec:
-  type: nodePort
+  type: NodePort
   selector:
     app: k8s-frontend
   ports:
