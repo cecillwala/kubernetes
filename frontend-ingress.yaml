@@ -5,13 +5,13 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: hello-world.example
+    - host: cecil.example
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: frontend
+                name: k8s-frontend
                 port:
-                  number: 8080
+                  number: 80
