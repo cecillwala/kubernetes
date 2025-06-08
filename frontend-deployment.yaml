@@ -18,4 +18,4 @@ spec:
       - name: angular-frontend
         image: cecillwala/k8s-frontend
         ports:
-        - containerPort: 80
+        - containerPort: 8080
