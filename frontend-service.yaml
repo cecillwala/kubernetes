@@ -3,10 +3,9 @@ kind: Service
 metadata:
   name: frontend-service
 spec:
-  type: NodePort
   selector:
-    app: k8s-frontend
+    app: frontend
   ports:
-    - protocol: TCP
-      port: 4200
-      targetPort: 4200
+  - protocol: TCP
+    port: 80
+    targetPort: 80
