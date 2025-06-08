@@ -18,4 +18,5 @@ spec:
         - name: frontend
           image: cecillwala/k8s-frontend
           ports:
-            - containerPort: 8080
+            - containerPort: 80
+            
