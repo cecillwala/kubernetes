@@ -36,4 +36,7 @@ networking:
   dnsDomain: cluster.local
   serviceSubnet: 10.96.0.0/12
   podSubnet: 10.244.0.0/16
-scheduler: {}
+apiServer:
+  certSANs:
+    -  "64.23.230.13"
+    -  "giktekkyc.org"
