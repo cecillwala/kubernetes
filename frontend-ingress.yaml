@@ -5,13 +5,13 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: cecil.example
+    - host: giktekkyc.org
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: k8s-frontend
+                name: frontend-service
                 port:
                   number: 80
