@@ -15,10 +15,10 @@ spec:
                 name: frontend
                 port:
                   number: 80
-          - path: /eureka-server
+          - path: /report
             pathType: Prefix
             backend:
               service:
-                name: eureka-service
+                name: report-frontend
                 port:
                   number: 80
