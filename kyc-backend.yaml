@@ -18,10 +18,10 @@ spec:
         - name: kyc-service
           image: cecillwala/kyc-kyc-service
           env:
-            SPRING_DATASOURCE_URL:  jdbc:postgresql://postgres:5432/kyc_db
-            SPRING_DATASOURCE_PASSWORD: giktekinterns
-            SPRING_DATASOURCE_USERNAME: giktekinterns
-            SPRING_JPA_HIBERNATE_DDL-AUTO:  update
+            - SPRING_DATASOURCE_URL:  jdbc:postgresql://postgres:5432/kyc_db
+            - SPRING_DATASOURCE_PASSWORD: giktekinterns
+            - SPRING_DATASOURCE_USERNAME: giktekinterns
+            - SPRING_JPA_HIBERNATE_DDL-AUTO:  update
           ports:
             - containerPort: 8081
             
