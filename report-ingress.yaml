@@ -4,8 +4,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
-  name: rewrite
-  namespace: default
+  name: report-ingress
 spec:
   ingressClassName: nginx
   rules:
