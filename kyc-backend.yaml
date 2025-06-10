@@ -17,25 +17,6 @@ spec:
       containers:
         - name: kyc-service
           image: cecillwala/kyc-kyc-service
-          env:
-            - name: SPRING_DATASOURCE_URL 
-              value:  jdbc:postgresql://postgres:5432/kyc_db
-            - name: SPRING_DATASOURCE_PASSWORD
-              value: giktekinterns
-            - name: SPRING_DATASOURCE_USERNAME
-              value: giktekinterns
-            - name: SPRING_JPA_HIBERNATE_DDL-AUTO
-              value:  update
-            - name: SPRING_RABBITMQ_HOST
-              value:  rabbitmq
-            - name: SPRING_RABBITMQ_PORT
-              value: 5672
-            - name: SPRING_RABBITMQ_USERNAME
-              value: guest
-            - name: SPRING_RABBITMQ_PASSWORD
-              value: guest
-            - name: SPRING_JPA_HIBERNATE_DDL-AUTO
-              value:  update
           ports:
             - containerPort: 8081
             
