@@ -30,9 +30,9 @@ spec:
         - name: POSTGRES_DB
           value: kyc_db
         - name: POSTGRES_USER
-          value: giktekinterns
+          value: postgres
         - name: POSTGRES_PASSWORD
-          value: giktekinterns
+          value: postgres
         ports:
         - containerPort: 5432
         volumeMounts:
