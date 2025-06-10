@@ -15,7 +15,7 @@ spec:
         app:  kyc-api-gateway
     spec:
       containers:
-        - name: backend
+        - name: api-gateway
           image: cecillwala/kyc-api-gateway
-          port:
+          ports:
             - containerPort: 8080

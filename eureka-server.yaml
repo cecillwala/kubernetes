@@ -18,6 +18,5 @@ spec:
         - name: frontend
           image: cecillwala/kyc-eureka-server
           ports:
-            - name: eureka
-              containerPort: 9099
+            - containerPort: 9099
             
