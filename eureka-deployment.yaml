@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: eureka-server
   labels:
-    app:  k8s-frontend
+    app:  kyc-eureka-server
 spec: 
   replicas: 2
   selector:
     matchLabels:
-      app:  k8s-frontend
+      app:  kyc-eureka-server
   template:
     metadata:
       labels:
-        app:  k8s-frontend
+        app:  kyc-eureka-server
     spec:
       containers:
         - name: frontend
-          image: cecillwala/k8s-frontend
+          image: cecillwala/kyc-eureka-server
           ports:
-            - containerPort: 80
+            - containerPort: 9099
             
