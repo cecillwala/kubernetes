@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: api-gateway
   labels:
-    app:  k8s-backend
+    app:  kyc-api-gateway
 spec: 
   replicas: 2
   selector:
     matchLabels:
-      app:  k8s-backend
+      app:  kyc-api-gateway
   template:
     metadata:
       labels:
-        app:  k8s-backend
+        app:  kyc-api-gateway
     spec:
       containers:
         - name: backend
-          image: cecillwala/k8s-backend
+          image: cecillwala/kyc-api-gateway
+          port:
+            - containerPort: 8080
