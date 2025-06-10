@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: kyc-service
   labels:
-    app:  kyc-frontend
+    app:  kyc-backend
 spec: 
   replicas: 2
   selector:
     matchLabels:
-      app:  kyc-frontend
+      app:  kyc-backend
   template:
     metadata:
       labels:
-        app:  kyc-frontend
+        app:  kyc-backend
     spec:
       containers:
-        - name: frontend
+        - name: kyc-service
           image: cecillwala/kyc-kyc-service
           ports:
             - containerPort: 80
-              targetPort: 808
+              targetPort: 8081
             

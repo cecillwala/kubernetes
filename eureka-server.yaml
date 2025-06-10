@@ -15,7 +15,7 @@ spec:
         app:  kyc-eureka-server
     spec:
       containers:
-        - name: frontend
+        - name: eureka-server
           image: cecillwala/kyc-eureka-server
           ports:
             - containerPort: 9099
