@@ -7,5 +7,4 @@ spec:
     app: kyc-eureka-server
   ports:
   - protocol: TCP
-    port: 80
-    targetPort: 8080
+    port: 8080
