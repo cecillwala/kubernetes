@@ -19,5 +19,4 @@ spec:
           image: cecillwala/kyc-kyc-service
           ports:
             - containerPort: 8081
-              targetPort: 8081
             
