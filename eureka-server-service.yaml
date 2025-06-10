@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: eureka-server
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: kyc-eureka-server
   ports:
   - protocol: TCP
-    port: 80
+    port: 9099
     targetPort: 9099
