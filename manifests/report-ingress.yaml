@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: report-ingress
   annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
@@ -11,7 +12,7 @@ spec:
       http:
         paths:
           - path: /report(/|$)(.*)
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: report-frontend
