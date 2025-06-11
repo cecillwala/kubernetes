@@ -17,10 +17,3 @@ spec:
                 name: frontend
                 port:
                   number: 80
-          - path: /backend/kyc/
-            pathType: Prefix
-            backend:
-              service:
-                name: api-gateway-external
-                port:
-                  number: 80
