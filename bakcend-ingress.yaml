@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backend-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: giktekkyc.org
+      http:
+        paths:
+          - path: /backend/kyc/**
+            pathType: Prefix
+            backend:
+              service:
+                name: api-gateway-external
+                port:
+                  number: 80
