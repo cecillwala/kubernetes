@@ -9,7 +9,7 @@ spec:
       http:
         paths:
           - path: /backend/kyc/**
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: api-gateway-external
