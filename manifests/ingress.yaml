@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-origin: "*"
     nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
@@ -19,5 +18,12 @@ spec:
             backend:
               service:
                 name: frontend
+                port:
+                  number: 80
+          - path: /report
+            pathType: Exact
+            backend:
+              service:
+                name: report-service
                 port:
                   number: 80
