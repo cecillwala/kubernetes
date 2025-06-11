@@ -12,7 +12,7 @@ spec:
     - host: giktekkyc.org
       http:
         paths:
-          - path: /backend/kyc/**
+          - path: /kyc/**
             pathType: ImplementationSpecific
             backend:
               service:
