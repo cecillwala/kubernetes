@@ -46,4 +46,5 @@ spec:
     app: kyc-report-service
   ports:
     - port: 8083
+      nodePort: 31559
       targetPort: 8083
