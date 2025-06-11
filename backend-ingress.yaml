@@ -13,8 +13,8 @@ spec:
     - host: giktekkyc.org
       http:
         paths:
-          - path: /kyc/**
-            pathType: ImplementationSpecific
+          - path: /kyc
+            pathType: Prefix
             backend:
               service:
                 name: kyc-service
