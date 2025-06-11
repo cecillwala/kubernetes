@@ -4,7 +4,6 @@ metadata:
   name: ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: nginx
   rules:
@@ -18,10 +17,10 @@ spec:
                 name: frontend
                 port:
                   number: 80
-          - path: /report(/\$)(.*)
-            pathType: ImplementationSpecific
+          - path: /backend
+            pathType: Prefix
             backend:
               service:
-                name:  report-frontend
+                name: pi-gateway-external
                 port:
                   number: 80
