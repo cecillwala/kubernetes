@@ -14,7 +14,7 @@ spec:
       http:
         paths:
           - path: /kyc/**
-            pathType: ImplentationSpecific
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: api-gateway-external
