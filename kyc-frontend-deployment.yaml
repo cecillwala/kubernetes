@@ -18,7 +18,7 @@ spec:
         - name: frontend
           image: cecillwala/kyc-frontend
           ports:
-            - containerPort: 80
+            - containerPort: 443
             
 ---
 
@@ -33,4 +33,4 @@ spec:
   ports:
   - protocol: TCP
     port: 443
-    targetPort: 80
+    targetPort: 443
