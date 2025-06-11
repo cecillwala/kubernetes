@@ -8,7 +8,20 @@ spec:
   resources:
     requests:
       storage: 10Gi
+
 ---
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: standard
+provisioner: kubernetes.io/aws-ebs  # Replace with your provisioner's name if using a different backend
+parameters:
+  type: gp2  # For AWS EBS, use appropriate volume type for your cloud provider
+  fsType: ext4
+  
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
