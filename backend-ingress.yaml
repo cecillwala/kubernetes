@@ -17,6 +17,6 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: api-gateway-external
+                name: kyc-service
                 port:
                   number: 8081
