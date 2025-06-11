@@ -14,7 +14,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: report-service
+                name: report-frontend
                 port:
                   number: 80
           
