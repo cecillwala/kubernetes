@@ -27,3 +27,10 @@ spec:
                 name: report-service
                 port:
                   number: 80
+          - path: /eureka
+            pathType: Prefix
+            backend:
+              service:
+                name: eureka-server-external
+                port:
+                  number: 9099
