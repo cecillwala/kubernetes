@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: kyc-service
   labels:
-    app:  kyc-backend
+    app:  kyc-service
 spec: 
   replicas: 2
   selector:
     matchLabels:
-      app:  kyc-backend
+      app:  kyc-service
   template:
     metadata:
       labels:
-        app:  kyc-backend
+        app:  kyc-service
     spec:
       containers:
         - name: kyc-service
@@ -45,6 +45,6 @@ spec:
   selector:
     app: kyc-service
   ports:
-    - port: 80
+    - port: 8081
       nodePort: 32068
       targetPort: 8081
