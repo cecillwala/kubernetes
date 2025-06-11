@@ -25,11 +25,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: kyc-service
+  name: kyc-service-internal
 spec:
   type: ClusterIP
   selector:
-    app: kyc-service-internal
+    app: kyc-service
   ports:
     - port: 8081
       targetPort: 8081
