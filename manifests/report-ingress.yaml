@@ -10,7 +10,7 @@ spec:
     - host: giktekkyc.org
       http:
         paths:
-          - path: /report
+          - path: /report(/|$)(.*)
             pathType: Prefix
             backend:
               service:
