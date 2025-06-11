@@ -14,13 +14,6 @@ spec:
       labels:
         app:  kyc-backend
     spec:
-      initContainers:
-      - name: wait-for-db
-        image: busybox
-        command:
-          - "/bin/sh"
-          - "-c"
-          - "/usr/local/bin/wait-for-it 63.23.230.13:5432 --timeout=60 --strict -- echo 'PostgreSQL is up'"
       containers:
         - name: kyc-service
           image: cecillwala/kyc-kyc-service
