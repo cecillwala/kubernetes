@@ -21,6 +21,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: pi-gateway-external
+                name: api-gateway-external
                 port:
                   number: 80
