@@ -13,8 +13,8 @@ spec:
     - host: giktekkyc.org
       http:
         paths:
-          - path: /kyc
-            pathType: Prefix
+          - path: /kyc/**
+            pathType: ImplentationSpecific
             backend:
               service:
                 name: api-gateway-external
