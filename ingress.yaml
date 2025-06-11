@@ -17,7 +17,7 @@ spec:
                 name: frontend
                 port:
                   number: 80
-          - path: /backend
+          - path: /backend/kyc/**
             pathType: Prefix
             backend:
               service:
