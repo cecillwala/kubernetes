@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-origin: "*"
     nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
@@ -21,17 +20,3 @@ spec:
                 name: frontend
                 port:
                   number: 80
-          - path: /report
-            pathType: Prefix
-            backend:
-              service:
-                name: report-service
-                port:
-                  number: 80
-          - path: /eureka
-            pathType: Prefix
-            backend:
-              service:
-                name: eureka-server-external
-                port:
-                  number: 9099
