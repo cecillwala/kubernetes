@@ -17,9 +17,9 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: api-gateway
+                name: kyc-service
                 port:
-                  number: 8080
+                  number: 8081
           - path: /admin
             pathType: Prefix
             backend:
