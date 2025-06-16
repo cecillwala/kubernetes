@@ -58,5 +58,4 @@ spec:
     app: kyc-service
   ports:
     - port: 8081
-      nodePort: 32068
       targetPort: 8081
