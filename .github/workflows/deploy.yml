@@ -25,7 +25,7 @@ jobs:
 
       - name: SSH into remote server and apply manifests
         run: |
-          sshpass -p 'giktekkyc#2030DEV' ssh -o StrictHostKeyChecking=no root@64.23.230.13 << 'EOF'
+          sshpass -p 'giktek#2030DEV' ssh -o StrictHostKeyChecking=no root@64.23.230.13 << 'EOF'
             export KUBECONFIG=/etc/kubernetes/admin.conf
 
             echo "Applying Kubernetes manifests..."
