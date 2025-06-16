@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: postgres
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: postgres
@@ -13,12 +13,18 @@ spec:
         app: postgres
     spec:
       containers:
-      - name: postgres
-        image: postgres
-        env:
-        - name: RABBITMQ_DEFAULT_USER
-          value: postgres
-        - name: RABBITMQ_DEFAULT_PASS
-          value: postgres
-        ports:
-        - containerPort: 5432
+        - name: postgres
+          image: 'postgres'
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: postgres-secret
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresdata
+      volumes:
+        - name: postgresdata
+          persistentVolumeClaim:
+            claimName: postgres-volume-claim
