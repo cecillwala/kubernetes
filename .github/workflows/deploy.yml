@@ -25,17 +25,18 @@ jobs:
 
       - name: SSH into remote server and apply manifests
         env:
-          VPS_SECRET: ${{ secrets.VPS_SECRET }}
           SEVER_PASSWORD: ${{ secrets.SEVER_PASSWORD }}
+          VPS_SECRET: ${{ secrets.VPS_SECRET }}
         run: |
-          sshpass -p "$SEVER_PASSWORD" ssh -o StrictHostKeyChecking=no root@$VPS_SECRET << EOF
+          sshpass -p "$SEVER_PASSWORD" ssh -tt -o StrictHostKeyChecking=no root@$VPS_SECRET bash -l -c "
             export KUBECONFIG=/etc/kubernetes/admin.conf
-
-            echo "Applying Kubernetes manifests..."
+      
+            echo 'Applying Kubernetes manifests...'
             kubectl apply -f /root/k8s-manifests/
-
-            echo "Restarting all deployments..."
-            for deploy in $(kubectl get deployments -o jsonpath='{.items[*].metadata.name}'); do
-              kubectl rollout restart deployment "$deploy"
+      
+            echo 'Restarting all deployments...'
+            for deploy in \$(kubectl get deployments -o jsonpath='{.items[*].metadata.name}'); do
+              kubectl rollout restart deployment \$deploy
             done
-          EOF
+          "
+
