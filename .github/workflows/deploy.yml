@@ -25,7 +25,7 @@ jobs:
 
       - name: SSH into remote server and apply manifests
         env:
-          SEVER_PASSWORD: ${{ secrets.SEVER_PASSWORD }}
+          SEVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
           VPS_SECRET: ${{ secrets.VPS_SECRET }}
         run: |
           sshpass -p "$SEVER_PASSWORD" ssh -tt -o StrictHostKeyChecking=no root@$VPS_SECRET bash -l -c "
