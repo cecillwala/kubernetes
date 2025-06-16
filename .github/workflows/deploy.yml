@@ -28,7 +28,7 @@ jobs:
           VPS_SECRET: ${{ secrets.VPS_SECRET }}
           SEVER_PASSWORD: ${{ secrets.SEVER_PASSWORD }}
         run: |
-          sshpass -p "$SEVER_PASSWORD" ssh -o StrictHostKeyChecking=no root@$VPS_SECRET << 'EOF'
+          sshpass -p "$SEVER_PASSWORD" ssh -o StrictHostKeyChecking=no root@$VPS_SECRET << EOF
             export KUBECONFIG=/etc/kubernetes/admin.conf
 
             echo "Applying Kubernetes manifests..."
