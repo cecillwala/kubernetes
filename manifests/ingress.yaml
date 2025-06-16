@@ -9,10 +9,6 @@ metadata:
     nginx.ingress.kubernetes.io/cors-allow-headers: "Content-Type, Authorization, X-Requested-With"
 spec:
   ingressClassName: nginx
-  tls:
-    - hosts:
-      - giktekkyc.org
-      secretName: tls-secret
   rules:
     - host: giktekkyc.org
       http:
