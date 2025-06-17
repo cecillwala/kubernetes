@@ -20,10 +20,3 @@ spec:
                 name: frontend
                 port:
                   number: 80
-          - path: /report
-            pathType: Prefix
-            backend:
-              service:
-                name: report-frontend
-                port:
-                  number: 80
