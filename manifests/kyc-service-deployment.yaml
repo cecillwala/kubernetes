@@ -4,7 +4,7 @@ metadata:
   name: kyc-service
   labels:
     app: kyc-service
-spec: 
+spec:
   replicas: 1
   selector:
     matchLabels:
@@ -14,18 +14,6 @@ spec:
       labels:
         app: kyc-service
     spec:
-      initContainers:
-        - name: wait-for-postgres
-          image: busybox:1.36
-          command:
-            - sh
-            - -c
-            - >
-              until nc -z postgres 5432;
-              do
-                echo "Waiting for PostgreSQL...";
-                sleep 2;
-              done
       containers:
         - name: kyc-service
           image: cecillwala/kyc-kyc-service
@@ -33,7 +21,6 @@ spec:
             - containerPort: 8081
 
 ---
-            
 apiVersion: v1
 kind: Service
 metadata:
