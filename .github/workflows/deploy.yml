@@ -35,7 +35,7 @@ jobs:
             export KUBECONFIG=/home/$VPS_USER/.kube/config
 
             echo 'Applying Kubernetes manifests...'
-            kubectl apply -f /home/$VPS_USER/k8s-manifests/
+            kubectl apply -f /home/$VPS_USER/kubernetes/manifests/
            
 
             echo 'Restarting all deployments...'
