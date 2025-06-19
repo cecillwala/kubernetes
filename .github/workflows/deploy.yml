@@ -9,6 +9,8 @@ on:
       - main
     types: [opened, synchronize, reopened]
   workflow_dispatch:
+  repository_dispatch:
+    types: [deploy-service]
 
 jobs:
   deploy:
@@ -23,17 +25,18 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y sshpass
 
-      - name: SSH into remote server and apply manifests
+      - name: SSH as non-root and apply manifests
         env:
-          SEVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
           VPS_SECRET: ${{ secrets.VPS_SECRET }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_USER_PASSWORD: ${{ secrets.VPS_USER_PASSWORD }}
         run: |
-          sshpass -p "$SERVER_PASSWORD" ssh -tt -o StrictHostKeyChecking=no root@$VPS_SECRET bash -l -c "
-            export KUBECONFIG=/etc/kubernetes/admin.conf
-      
+          sshpass -p "$VPS_USER_PASSWORD" ssh -tt -o StrictHostKeyChecking=no $VPS_USER@$VPS_SECRET bash -l -c "
+            export KUBECONFIG=/home/$VPS_USER/.kube/config
+
             echo 'Applying Kubernetes manifests...'
-            kubectl apply -f /root/k8s-manifests/
-      
+            kubectl apply -f /home/$VPS_USER/k8s-manifests/
+
             echo 'Restarting all deployments...'
             for deploy in \$(kubectl get deployments -o jsonpath='{.items[*].metadata.name}'); do
               kubectl rollout restart deployment \$deploy
