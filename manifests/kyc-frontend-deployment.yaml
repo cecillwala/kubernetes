@@ -32,5 +32,4 @@ spec:
     app: kyc-frontend
   ports:
   - protocol: TCP
-    port: 443
-    targetPort: 80
+    port: 80

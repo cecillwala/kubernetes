@@ -51,5 +51,4 @@ spec:
   selector:
     app: rabbitmq
   ports:
-    - port: 443
-      targetPort: 15672
+    - port: 15672

@@ -19,25 +19,25 @@ spec:
               service:
                 name: api-gateway-external
                 port:
-                  number: 443
+                  number: 8080
           - path: /admin
             pathType: Prefix
             backend:
               service:
                 name: api-gateway-external
                 port:
-                  number: 443
+                  number: 8080
           - path: /eureka
             pathType: Prefix
             backend:
               service:
                 name: eureka-server-external
                 port:
-                  number: 443
+                  number: 9099
           - path: /rabbitmq
             pathType: Prefix
             backend:
               service:
                 name: rabbitmq-external
                 port:
-                  number: 443
+                  number: 15672
