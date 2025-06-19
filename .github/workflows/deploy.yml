@@ -9,6 +9,8 @@ on:
       - main
     types: [opened, synchronize, reopened]
   workflow_dispatch:
+  repository_dispatch:
+    types: [deploy-service]  
 
 jobs:
   deploy:
@@ -30,13 +32,12 @@ jobs:
         run: |
           sshpass -p "$SEVER_PASSWORD" ssh -tt -o StrictHostKeyChecking=no root@$VPS_SECRET bash -l -c "
             export KUBECONFIG=/etc/kubernetes/admin.conf
-      
+
             echo 'Applying Kubernetes manifests...'
             kubectl apply -f /root/k8s-manifests/
-      
+
             echo 'Restarting all deployments...'
             for deploy in \$(kubectl get deployments -o jsonpath='{.items[*].metadata.name}'); do
               kubectl rollout restart deployment \$deploy
             done
           "
-
