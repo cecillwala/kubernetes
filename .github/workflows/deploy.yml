@@ -1,0 +1,42 @@
+name: Deploy All Services to Kubernetes
+
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo (for completeness)
+        uses: actions/checkout@v4
+
+      - name: Install sshpass
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sshpass
+
+      - name: SSH into remote server and apply manifests
+        env:
+          SEVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
+          VPS_SECRET: ${{ secrets.VPS_SECRET }}
+        run: |
+          sshpass -p "$SEVER_PASSWORD" ssh -tt -o StrictHostKeyChecking=no root@$VPS_SECRET bash -l -c "
+            export KUBECONFIG=/etc/kubernetes/admin.conf
+      
+            echo 'Applying Kubernetes manifests...'
+            kubectl apply -f /root/k8s-manifests/
+      
+            echo 'Restarting all deployments...'
+            for deploy in \$(kubectl get deployments -o jsonpath='{.items[*].metadata.name}'); do
+              kubectl rollout restart deployment \$deploy
+            done
+          "
+
