@@ -36,9 +36,11 @@ jobs:
 
             echo 'Applying Kubernetes manifests...'
             kubectl apply -f /home/$VPS_USER/k8s-manifests/
+           
 
             echo 'Restarting all deployments...'
             for deploy in \$(kubectl get deployments -o jsonpath='{.items[*].metadata.name}'); do
               kubectl rollout restart deployment \$deploy
             done
+             kubectl get pods
           "
