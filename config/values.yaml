@@ -1,0 +1,81 @@
+prometheus:
+  prometheusSpec:
+    retention: 2d
+    retentionSize: 6GiB
+    scrapeInterval: 60s
+    evaluationInterval: 60s
+    externalUrl: https://giktekkyc.org/prometheus/
+    routePrefix: /prometheus
+    additionalArgs:
+      - name: web.external-url
+        value: https://giktekkyc.org/prometheus/
+      - name: web.route-prefix
+        value: /prometheus
+    resources:
+      requests:
+        memory: 256Mi
+        cpu: 100m
+      limits:
+        memory: 256Mi
+        cpu: 300m
+  service:
+    type: NodePort
+    nodePort: 32001
+
+alertmanager:
+  alertmanagerSpec:
+    resources:
+      requests:
+        memory: 64Mi
+        cpu: 50m
+      limits:
+        memory: 128Mi
+        cpu: 100m
+  service:
+    type: NodePort
+    nodePort: 32002
+
+grafana:
+  enabled: true
+  resources:
+    requests:
+      memory: 128Mi
+      cpu: 50m
+    limits:
+      memory: 256Mi
+      cpu: 150m
+  adminPassword: "admin"
+  service:
+    type: NodePort
+    nodePort: 32000
+  grafana.ini:
+    server:
+      root_url: https://giktekkyc.org/grafana/
+      serve_from_sub_path: true
+
+kubeStateMetrics:
+  resources:
+    requests:
+      memory: 64Mi
+      cpu: 50m
+    limits:
+      memory: 128Mi
+      cpu: 100m
+
+nodeExporter:
+  resources:
+    requests:
+      memory: 32Mi
+      cpu: 30m
+    limits:
+      memory: 64Mi
+      cpu: 50m
+
+prometheusOperator:
+  resources:
+    requests:
+      memory: 64Mi
+      cpu: 50m
+    limits:
+      memory: 128Mi
+      cpu: 100m
