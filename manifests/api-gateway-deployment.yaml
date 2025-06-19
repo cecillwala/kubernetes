@@ -46,6 +46,6 @@ spec:
     app: kyc-api-gateway
   ports:
   - protocol: TCP
-    port: 8080
+    port: 443
     nodePort: 32068
     targetPort: 8080
