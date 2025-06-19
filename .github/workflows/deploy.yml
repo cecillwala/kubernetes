@@ -9,50 +9,8 @@ on:
       - main
     types: [opened, synchronize, reopened]
   workflow_dispatch:
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo (for completeness)
-        uses: actions/checkout@v4
-
-      - name: Install sshpass
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y sshpass
-
-      - name: SSH into remote server and apply manifests
-        env:
-          SEVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
-          VPS_SECRET: ${{ secrets.VPS_SECRET }}
-        run: |
-          sshpass -p "$SERVER_PASSWORD" ssh -tt -o StrictHostKeyChecking=no root@$VPS_SECRET bash -l -c "
-            export KUBECONFIG=/etc/kubernetes/admin.conf
-      
-            echo 'Applying Kubernetes manifests...'
-            kubectl apply -f /root/k8s-manifests/
-      
-            echo 'Restarting all deployments...'
-            for deploy in \$(kubectl get deployments -o jsonpath='{.items[*].metadata.name}'); do
-              kubectl rollout restart deployment \$deploy
-            done
-          "
-
-name: Deploy All Services to Kubernetes
-
-on:
-  push:
-    branches: 
-      - main
-  pull_request:
-    branches:
-      - main
-    types: [opened, synchronize, reopened]
-  workflow_dispatch:
   repository_dispatch:
-    types: [deploy-service]  
+    types: [deploy-service]
 
 jobs:
   deploy:
@@ -67,19 +25,22 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y sshpass
 
-      - name: SSH into remote server and apply manifests
+      - name: SSH as non-root and apply manifests
         env:
-          SEVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
           VPS_SECRET: ${{ secrets.VPS_SECRET }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_USER_PASSWORD: ${{ secrets.VPS_USER_PASSWORD }}
         run: |
-          sshpass -p "$SERVER_PASSWORD" ssh -tt -o StrictHostKeyChecking=no root@$VPS_SECRET bash -l -c "
-            export KUBECONFIG=/etc/kubernetes/admin.conf
+          sshpass -p "$VPS_USER_PASSWORD" ssh -tt -o StrictHostKeyChecking=no $VPS_USER@$VPS_SECRET bash -l -c "
+            export KUBECONFIG=/home/$VPS_USER/.kube/config
 
             echo 'Applying Kubernetes manifests...'
-            kubectl apply -f /root/k8s-manifests/
+            kubectl apply -f /home/$VPS_USER/kubernetes/manifests/
+           
 
             echo 'Restarting all deployments...'
             for deploy in \$(kubectl get deployments -o jsonpath='{.items[*].metadata.name}'); do
               kubectl rollout restart deployment \$deploy
             done
+             kubectl get pods
           "
