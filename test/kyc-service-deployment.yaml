@@ -51,6 +51,18 @@ spec:
               name: springboot-secret
               key: RABBITMQ_PORT
 
+        - name: SPRING_RABBITMQ_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: springboot-secret
+              key: RABBITMQ_USERNAME
+
+        - name: SPRING_RABBITMQ_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: springboot-secret
+              key: RABBITMQ_PASSWORD
+
         - name: RABBITMQ_QUEUE_NAME
           valueFrom:
             secretKeyRef:
