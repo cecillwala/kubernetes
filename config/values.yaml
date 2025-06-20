@@ -43,7 +43,6 @@ grafana:
     nodePort: 32000
   grafana.ini:
     server:
-      root_url: https://giktekkyc.org/grafana/
       serve_from_sub_path: true
 
 kubeStateMetrics:
