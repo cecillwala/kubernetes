@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kyc-service
+  name: test-kyc-service
   labels:
-    app: kyc-service
+    app: test-kyc-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app:  kyc-service
+      app:  test-kyc-service
   template:
     metadata:
       labels:
-        app: kyc-service
+        app: test-kyc-service
     spec:
       containers:
-        - name: kyc-service
+        - name: test-kyc-service
           image: cecillwala/test-kyc-service
           ports:
             - containerPort: 8081
@@ -86,11 +86,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: kyc-service
+  name: test-kyc-service
 spec:
   type: ClusterIP
   selector:
-    app: kyc-service
+    app: test-kyc-service
   ports:
     - port: 8081
       targetPort: 8081
