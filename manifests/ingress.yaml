@@ -34,6 +34,20 @@ spec:
                 name: api-gateway-external
                 port:
                   number: 8080
+          - path: /eureka
+            pathType: Prefix
+            backend:
+              service:
+                name: api-gateway-external
+                port:
+                  number: 9099
+          - path: /grafana
+            pathType: Prefix
+            backend:
+              service:
+                name: monitoring-grafana
+                port:
+                  number: 80
           - path: /report
             pathType: Prefix
             backend:
