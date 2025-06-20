@@ -4,13 +4,6 @@ prometheus:
     retentionSize: 6GiB
     scrapeInterval: 60s
     evaluationInterval: 60s
-    externalUrl: https://giktekkyc.org/prometheus/
-    routePrefix: /prometheus
-    additionalArgs:
-      - name: web.external-url
-        value: https://giktekkyc.org/prometheus/
-      - name: web.route-prefix
-        value: /prometheus
     resources:
       requests:
         memory: 256Mi

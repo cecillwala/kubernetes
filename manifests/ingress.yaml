@@ -20,3 +20,24 @@ spec:
                 name: frontend
                 port:
                   number: 80
+          - path: /kyc
+            pathType: Prefix
+            backend:
+              service:
+                name: api-gateway-external
+                port:
+                  number: 8080
+          - path: /admin
+            pathType: Prefix
+            backend:
+              service:
+                name: api-gateway-external
+                port:
+                  number: 8080
+          - path: /report
+            pathType: Prefix
+            backend:
+              service:
+                name: report-frontend
+                port:
+                  number: 80
