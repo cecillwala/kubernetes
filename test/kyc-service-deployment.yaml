@@ -19,67 +19,67 @@ spec:
           image: cecillwala/test-kyc-service
           ports:
             - containerPort: 8081
+
           env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: springboot-config
+                  key: DB_URL
 
-        - name: SPRING_DATASOURCE_URL
-          valueFrom:
-            configMapKeyRef:
-              name: springboot-config
-              key: DB_URL
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: springboot-config
+                  key: DB_USER
 
-        - name: SPRING_DATASOURCE_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: springboot-config
-              key: DB_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: springboot-secret
+                  key: DB_PASSWORD
 
-        - name: SPRING_DATASOURCE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: springboot-secret
-              key: DB_PASSWORD
+            - name: SPRING_RABBITMQ_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: springboot-secret
+                  key: RABBITMQ_HOST
 
-        - name: SPRING_RABBITMQ_HOST
-          valueFrom:
-            secretKeyRef:
-              name: springboot-secret
-              key: RABBITMQ_HOST
+            - name: SPRING_RABBITMQ_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: springboot-secret
+                  key: RABBITMQ_PORT
 
-        - name: SPRING_RABBITMQ_PORT
-          valueFrom:
-            secretKeyRef:
-              name: springboot-secret
-              key: RABBITMQ_PORT
+            - name: SPRING_RABBITMQ_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: springboot-secret
+                  key: RABBITMQ_USERNAME
 
-        - name: SPRING_RABBITMQ_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: springboot-secret
-              key: RABBITMQ_USERNAME
+            - name: SPRING_RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: springboot-secret
+                  key: RABBITMQ_PASSWORD
 
-        - name: SPRING_RABBITMQ_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: springboot-secret
-              key: RABBITMQ_PASSWORD
+            - name: RABBITMQ_QUEUE_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: springboot-secret
+                  key: RABBITMQ_QUEUE_NAME
 
-        - name: RABBITMQ_QUEUE_NAME
-          valueFrom:
-            secretKeyRef:
-              name: springboot-secret
-              key: RABBITMQ_QUEUE_NAME
+            - name: RABBITMQ_EXCHANGE_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: springboot-secret
+                  key: RABBITMQ_EXCHANGE_NAME
 
-        - name: RABBITMQ_EXCHANGE_NAME
-          valueFrom:
-            secretKeyRef:
-              name: springboot-secret
-              key: RABBITMQ_EXCHANGE_NAME
-
-        - name: RABBITMQ_ROUTING_KEY
-          valueFrom:
-            secretKeyRef:
-              name: springboot-secret
-              key: RABBITMQ_ROUTING_KEY
+            - name: RABBITMQ_ROUTING_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: springboot-secret
+                  key: RABBITMQ_ROUTING_KEY
 
 ---
 
