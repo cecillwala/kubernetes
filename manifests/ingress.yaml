@@ -9,6 +9,10 @@ metadata:
     nginx.ingress.kubernetes.io/cors-allow-headers: "Content-Type, Authorization, X-Requested-With"
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - cecillwala.online
+      secretName: tls-cert
   rules:
     - host: cecillwala.online
       http:
