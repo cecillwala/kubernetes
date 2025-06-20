@@ -5,6 +5,7 @@ metadata:
   labels:
     app: postgres
 data:
+  POSTGRES_CONNECTION: jdbc:postgresql://postgres:5432/kyc_db
   POSTGRES_DB: kyc_db
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres

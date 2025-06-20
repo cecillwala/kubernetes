@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: springboot-config
+  namespace: default
+data:
+  DB_URL: jdbc:postgresql://postgres:5432/kyc_db
+  DB_USERNAME: postgres
+  DB_PASSWORD: postgres
+  RABBITMQ_QUEUE_NAME: email-queue
+  RABBITMQ_ROUTING_KEY: email_key
+  RABBITMQ_EXCHANGE_NAME: email_exchange
+  SPRING_RABBITMQ_HOST: rabbitmq
+  SPRING_RABBITMQ_PORT: 5672
+  SPRING_RABBITMQ_USERNAME: guest
+  SPRING_RABBITMQ_PASSWORD: guest
+
