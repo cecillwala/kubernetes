@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sockets-service
+  labels:
+    app: sockets-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app:  sockets-service
+  template:
+    metadata:
+      labels:
+        app: sockets-service
+    spec:
+      containers:
+        - name: sockets-service
+          image: cecillwala/sockets-service
+          ports:
+            - containerPort: 8084
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: sockets-service
+spec:
+  type: ClusterIP
+  selector:
+    app: sockets-service
+  ports:
+    - port: 8084
+      targetPort: 8084
