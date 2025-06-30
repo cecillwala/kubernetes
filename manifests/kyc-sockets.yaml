@@ -27,9 +27,10 @@ kind: Service
 metadata:
   name: sockets-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: sockets-service
   ports:
     - port: 8084
       targetPort: 8084
+      nodePort: 32004
