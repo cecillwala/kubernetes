@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-chats
+  labels:
+    app:  kyc-admin-chats
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app:  kyc-admin-chats
+  template:
+    metadata:
+      labels:
+        app:  kyc-admin-chats
+    spec:
+      containers:
+        - name: admin-chats
+          image: cecillwala/kyc-admin-chats
+          ports:
+            - containerPort: 80
+            
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-chats
+spec:
+  type: NodePort
+  selector:
+    app: kyc-admin-chats
+  ports:
+  - protocol: TCP
+    port: 80
+    nodePort: 31201
